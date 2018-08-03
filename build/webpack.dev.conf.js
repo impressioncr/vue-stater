@@ -19,7 +19,31 @@ module.exports = merge(baseConf, {
             }
           }
         ]
-      }
+      },
+      {
+        test: /\.styl/,
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'stylus-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+        ],
+      },
     ]
   },
 

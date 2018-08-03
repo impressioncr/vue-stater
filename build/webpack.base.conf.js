@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development'
+console.log('isDev', isDev);
 
 module.exports = {
   entry: {
@@ -42,36 +43,12 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.styl/,
-        use: [
-          'vue-style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'stylus-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-        ],
-      },
-      {
         test: /\.(gif|jpg|png)\??.*$/,
         use: [
           {
             loader: 'url-loader',
             options: {
-              name: '[name].min.[ext]',
+              name: 'static/imgs/[name][hash:5].[ext]',
               limit: 10000,
               useRelativePath: true
             }
