@@ -10,17 +10,6 @@ module.exports = merge(baseConf, {
   module: {
     rules: [
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: {
-              attrs: ['img:src', 'img:data-src']
-            }
-          }
-        ]
-      },
-      {
         test: /\.styl/,
         use: [
           'vue-style-loader',
