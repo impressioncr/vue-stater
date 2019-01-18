@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const ExtractTextPlugin = require('extract-text-webpack-plugin') // 或者使用mini-css-extract-plugin
+const autoprefixer = require('autoprefixer')
+const postcssPx2rem = require('postcss-px2rem')
 const baseConf = require('./webpack.base.conf')
 
 
@@ -9,7 +11,8 @@ module.exports = merge(baseConf, {
   mode: 'production',
 
   output: {
-    filename: 'static/js/[name].[hash:5].js'
+    publicPath: '../',
+    filename: 'js/[name].[hash:5].js'
   },
 
   module: {
@@ -22,33 +25,30 @@ module.exports = merge(baseConf, {
           },
           use: [
             {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true
-              }
+              loader: 'css-loader'
             },
             {
               loader: 'postcss-loader',
               options: {
-                sourceMap: true
+                plugins: () => [
+                  autoprefixer(),
+                  postcssPx2rem({remUnit: 50})
+                ],
               }
             },
             {
-              loader: 'stylus-loader',
-              options: {
-                sourceMap: true
-              }
+              loader: 'stylus-loader'
             },
           ],
         })  
-      },
+      }
     ]
   },
 
   plugins: [
     new ExtractTextPlugin({
-      filename: 'static/css/[name].[hash:5].css',
-      allChunks: false
+      filename: 'css/[name].[hash:5].css',
+      // allChunks: false
     })
   ]
 })

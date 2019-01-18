@@ -5,13 +5,14 @@ module.exports = function(api) {
       [
         "@babel/preset-env", 
         {
-          debug:  true,
+          debug:  false,
           useBuiltIns: 'usage'
         }
       ] 
     ],
     plugins: [
-      "@babel/plugin-transform-runtime"
+      "@babel/plugin-transform-runtime",
+      "@babel/plugin-syntax-dynamic-import"
     ]
   }
 }

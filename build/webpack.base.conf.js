@@ -1,15 +1,16 @@
 const path = require('path')
 const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const isDev = process.env.NODE_ENV === 'development'
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { HtmlWebpackPlugins, entry } = require('./webpack.project.config')
+const { webpackConf } = require('../project.config')
+const isDev = process.env.MEM_ENV === 'DEV'
 console.log('isDev', isDev);
 
-module.exports = {
-  entry: {
-    app: './src/app.js'
-  },
+const baseConf = {
+  entry,
 
   output: {
     publicPath: '/',
@@ -17,16 +18,22 @@ module.exports = {
   },
 
   optimization: {
-    runtimeChunk: {
-      name: 'manifest'
-    },
+    minimize: false,
     splitChunks: {
-      chunks: 'all'
+      minSize: 0,
+      name: "vendors",
+      chunks: "all"
     }
   },
 
   module: {
     rules: [
+      {
+        test: /\.(vue|js|jsx)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        enforce: 'pre'
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -48,9 +55,8 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              name: 'static/imgs/[name][hash:5].[ext]',
-              limit: 10000,
-              useRelativePath: true
+              name: 'images/[name][hash:5].[ext]',
+              limit: 10000
             }
           }
         ]
@@ -70,18 +76,18 @@ module.exports = {
     // new webpack.DllReferencePlugin({
     //   manifest: require('../src/dll/vue-manifest.json')
     // }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true
+    ...HtmlWebpackPlugins,
+    new ProgressBarPlugin({
+      format: 'build [:bar] :percent (:elapsed seconds)',
+      clear: false, 
+      width: 60
     }),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: '/',
-        ignore: ['.*']
-      }
-    ]),
-    new VueLoaderPlugin(), // Vue-loader在15.*之后的版本需要 VueLoaderPlugin
+    new VueLoaderPlugin(),
   ]
 }
+
+// if (webpackConf.common.postcssPx2rem) {
+//   baseConf.
+// }
+
+module.exports = baseConf
