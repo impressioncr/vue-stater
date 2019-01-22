@@ -22,7 +22,14 @@
   "rules": {
     "no-console": "off",
     "no-debugger": "off",
-    "no-new": "off"
+    "no-new": "off",
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": 3,
+      "multiline": {
+        "max": 2,
+        "allowFirstLine": true
+      }
+    }]
   },
   "globals": {
     "MEM_ENV": true

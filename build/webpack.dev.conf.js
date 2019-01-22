@@ -69,7 +69,7 @@ module.exports = new Promise((resolve, reject) => {
       const messages = userConfig.entries.map((page, index) => {
         const isSampleConf = typeof page === 'string'
         const chunkName = isSampleConf ? page : page.htmlName
-        return `Your application ${index + 1} is running here: http://devpre.cnsuning.com:${port}/${chunkName}.html`
+        return `Your application ${index + 1} is running here: http://${userWebpack.dev.host}:${port}/${chunkName}.html`
       })
       const ifPortOccupied = port !== expectPort
       ifPortOccupied && messages.unshift(`${expectPort} port has been Occupied, found ${port} instead`)

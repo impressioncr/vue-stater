@@ -1,0 +1,2 @@
+# add eslint ingore file here
+src/assets/js/*.js

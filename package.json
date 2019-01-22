@@ -7,9 +7,10 @@
     "start": "cross-env NODE_ENV=DEV webpack-dev-server --inline --config build/webpack.dev.conf.js",
     "dev": "nodemon --watch build --exec \"cross-env NODE_ENV=DEV webpack-dev-server --inline --config build/webpack.dev.conf.js\"",
     "build": "rimraf dist && cross-env NODE_ENV=DEV webpack --config build/webpack.prod.conf.js",
-    "build:dll": "webpack --config build/webpack.dll.conf.js"
+    "build:dll": "webpack --config build/webpack.dll.conf.js",
+    "fix": "eslint --ext .vue --ext .js src/ --fix"
   },
-  "author": "18041002",
+  "author": "horace zhang",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.2.2",
