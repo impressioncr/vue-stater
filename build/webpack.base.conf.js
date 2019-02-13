@@ -6,8 +6,8 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 // const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { HtmlWebpackPlugins, entry } = require('./webpack.project.config')
 const { webpackConf } = require('../project.config')
-const isDev = process.env.MEM_ENV === 'DEV'
-console.log('isDev', isDev);
+const isDev = process.env.NODE_ENV === 'DEV'
+console.log('isDev', isDev)
 
 const baseConf = {
   entry,
