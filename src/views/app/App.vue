@@ -3,16 +3,18 @@
     <div class="content">
       16:9
     </div>
-    <subPage />
+    <SubPage />
+    <router-view />
   </div>
 </template>
 
 <script>
+// const subPage = () => import('./pages/subpage.vue')
 const img = require('../../assets/images/im.png')
 console.log(img)
 export default {
   components: {
-    subPage: () => import('./subpage.vue')
+    SubPage: (resolve) => require(['./pages/subpage.vue'], resolve)
   },
   data () {
     return {

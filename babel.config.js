@@ -1,18 +1,18 @@
-module.exports = function(api) {
+module.exports = function (api) {
   api.cache(false)
   return {
     presets: [
       [
-        "@babel/preset-env", 
+        '@babel/preset-env',
         {
-          debug:  false,
+          debug: false,
           useBuiltIns: 'usage'
         }
-      ] 
+      ]
     ],
     plugins: [
-      "@babel/plugin-transform-runtime",
-      "@babel/plugin-syntax-dynamic-import"
+      '@babel/plugin-transform-runtime',
+      '@babel/plugin-syntax-dynamic-import'
     ]
   }
 }

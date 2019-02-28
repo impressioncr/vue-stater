@@ -6,7 +6,6 @@ const autoprefixer = require('autoprefixer')
 const postcssPx2rem = require('postcss-px2rem')
 const baseConf = require('./webpack.base.conf')
 
-
 module.exports = merge(baseConf, {
   mode: 'production',
 
@@ -21,7 +20,7 @@ module.exports = merge(baseConf, {
         test: /\.styl/,
         use: ExtractTextPlugin.extract({
           fallback: {
-            loader: 'vue-style-loader',
+            loader: 'vue-style-loader'
           },
           use: [
             {
@@ -32,22 +31,22 @@ module.exports = merge(baseConf, {
               options: {
                 plugins: () => [
                   autoprefixer(),
-                  postcssPx2rem({remUnit: 50})
-                ],
+                  postcssPx2rem({ remUnit: 50 })
+                ]
               }
             },
             {
               loader: 'stylus-loader'
-            },
-          ],
-        })  
+            }
+          ]
+        })
       }
     ]
   },
 
   plugins: [
     new ExtractTextPlugin({
-      filename: 'css/[name].[hash:5].css',
+      filename: 'css/[name].[hash:5].css'
       // allChunks: false
     })
   ]
