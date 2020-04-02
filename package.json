@@ -1,7 +1,7 @@
 {
   "name": "mem-demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "vue starter",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=DEV webpack-dev-server --inline --config build/webpack.dev.conf.js",
@@ -63,5 +63,6 @@
   "devDependencies": {
     "friendly-errors-webpack-plugin": "^1.7.0",
     "portfinder": "^1.0.20"
-  }
+  },
+  "repository": "https://github.com/lushdog/vue-starter"
 }
