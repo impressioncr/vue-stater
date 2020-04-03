@@ -1,12 +1,12 @@
 module.exports = {
   entries: [
-    "app",
+    'app',
     {
-      "htmlName": "bpage",
-      "htmlTitle": "title",
+      htmlName: 'bpage',
+      'htmlTitle': 'title',
     },
     {
-      "htmlName": "cpage"
+      'htmlName': 'cpage'
     }
   ],
   webpackConf: {
@@ -22,13 +22,6 @@ module.exports = {
     },
     prd: {
       
-    },
-    coreJsPolyfill: [
-      'core-js/modules/es6.promise'
-    ]
+    }
   }
 }
-
-
-
-

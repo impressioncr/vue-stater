@@ -30,8 +30,5 @@
         "allowFirstLine": true
       }
     }]
-  },
-  "globals": {
-    "MEM_ENV": true
   }
 }
