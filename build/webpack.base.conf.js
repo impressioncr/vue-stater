@@ -55,7 +55,7 @@ const baseConf = {
           {
             loader: 'url-loader',
             options: {
-              name: 'images/[name][hash:5].[ext]',
+              name: 'images/[name].[hash:5].[ext]',
               limit: 10000
             }
           }
